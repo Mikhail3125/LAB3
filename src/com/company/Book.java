@@ -1,16 +1,14 @@
 package com.company;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
     String author;
     String genre;
     String name;
     int edition;
 
     public Book() {
-        String author;
-        String genre;
-        String name;
-        int edition;
     }
 
     public Book(String author, String genre, String name, int edition) {

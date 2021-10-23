@@ -1,8 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Product {
+public class Product implements Serializable {
+
     String name;
     LocalDateTime produceDate;
     int term;
@@ -11,11 +13,6 @@ public class Product {
 
 
     public Product() {
-        String name;
-        LocalDateTime date;
-        int term;
-        int price;
-        int N;
     }
 
 
@@ -63,6 +60,18 @@ public class Product {
     }
 
     public void setN(int n) {
-        N = n;
+        this.N = n;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", produceDate=" + produceDate +
+                ", term=" + term +
+                ", price=" + price +
+                ", N=" + N +
+                '}';
     }
 }

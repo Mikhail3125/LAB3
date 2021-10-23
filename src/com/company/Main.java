@@ -30,10 +30,10 @@ public class Main {
     public Main() {
     }
 
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         System.out.println("Введите количество книг:");
         int num = InputQuantity();
+        Database db = new Database();
         Book[] books = new Book[num];
         InputData(books, num);
         OutputData(books, num);
@@ -59,20 +59,19 @@ public class Main {
             if (num < 1) {
                 System.out.println("Неверный ввод");
             }
-        } while(num < 1);
+        } while (num < 1);
 
         amount.close();
         return num;
     }
 
     public static void InputData(Book[] books, int num) {
-        for(int i = 0; i < num; ++i) {
+        for (int i = 0; i < num; ++i) {
             books[i] = new Book();
             books[i].author = Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)];
             books[i].genre = Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)];
             books[i].name = Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)];
-            books[i].edition = r.nextInt(15000) + 1 ;
-
+            books[i].edition = r.nextInt(15000) + 1;
             System.out.println("\nКнига №" + (i + 1) + ":" + books[i]);
         }
 
@@ -84,9 +83,9 @@ public class Main {
     public static void OutputData(Book[] books, int num) {
         System.out.println("\n\nКнига тираж которой не превышает 10000: ");
 
-        for(int i = 0; i < num; ++i) {
+        for (int i = 0; i < num; ++i) {
             if (books[i].edition < 10000) {
-                System.out.println("\n"+ books[i]);
+                System.out.println("\n" + books[i]);
             }
         }
 
@@ -96,7 +95,7 @@ public class Main {
     //      Средний уровень
 //      Вывести наименование товара и конечную дату применения (годен до:).
     public static void Input_OutputProduct(Product[] product, int num) {
-        for(int i = 0; i < num; ++i) {
+        for (int i = 0; i < num; ++i) {
             product[i] = new Product();
             product[i].name = Dictionaries.getProducts()[r.nextInt(Dictionaries.getProducts().length)];
             System.out.println("\nНазвание товара: " + product[i].name);
@@ -112,12 +111,12 @@ public class Main {
             LocalDateTime var10001 = product[i].produceDate;
             System.out.println("Дата производства: " + var10001.format(dateFormatter));
             var10001 = product[i].produceDate;
-            LocalDateTime L= var10001.plusDays(product[i].term);
+            LocalDateTime L = var10001.plusDays(product[i].term);
             System.out.println("Годен до: " + L.format(dateFormatter));
             product[i].price = r.nextInt(500) + 1;
             product[i].N = r.nextInt(100000000) + 1;
-            System.out.println("Цена:"+ product[i].price);
-            System.out.println("Серия:"+ product[i].N);
+            System.out.println("Цена:" + product[i].price);
+            System.out.println("Серия:" + product[i].N);
         }
 
     }

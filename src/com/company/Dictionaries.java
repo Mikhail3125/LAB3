@@ -1,14 +1,13 @@
 package com.company;
 
 public class Dictionaries {
-    private static String[] surnames ={
+    private static String[] surnames = {
             "Толкин",
             "Дик",
             "Стендаль",
             "Лавкрафт",
             "Стивенс"
     };
-    public static String[] getSurnames() {return surnames;}
     private static String[] genres = {
             "Фентези",
             "Научная Фанстастика",
@@ -16,7 +15,6 @@ public class Dictionaries {
             "Хоррор",
             "Приключение"
     };
-    public static String[] getGenres() {return genres;}
     private static String[] names = {
             "Хоббит",
             "Марионетки мироздания",
@@ -24,9 +22,6 @@ public class Dictionaries {
             "Зов Ктулху",
             "Остров сокровищ"
     };
-
-
-    public static String[] getNames() {return names;}
     private static String[] products = {
             "Курица",
             "Масло",
@@ -40,5 +35,19 @@ public class Dictionaries {
             "Картошка"
     };
 
-    public static String[] getProducts() {return products;}
+    public static String[] getSurnames() {
+        return surnames;
+    }
+
+    public static String[] getGenres() {
+        return genres;
+    }
+
+    public static String[] getNames() {
+        return names;
+    }
+
+    public static String[] getProducts() {
+        return products;
+    }
 }
