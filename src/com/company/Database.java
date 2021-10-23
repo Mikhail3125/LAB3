@@ -88,9 +88,9 @@ public class Database {
         }
     }
 
-    public void deserialize(String filename) {
+    public void deserialize(String LAB3) {
         try {
-            FileInputStream fileIn = new FileInputStream(filename);
+            FileInputStream fileIn = new FileInputStream(LAB3);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             this.list = (ArrayList<Book>) in.readObject();
             in.close();
