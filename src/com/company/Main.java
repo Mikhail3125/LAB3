@@ -35,12 +35,24 @@ public class Main {
         int num = InputQuantity();
         Database db = new Database();
         Book[] books = new Book[num];
+        db.add(new Book("Integer", "Integer", "Integer", Integer.MAX_VALUE));
         InputData(books, num);
         OutputData(books, num);
+        db.save("db.txt");
+        db.clear();
+        db.load("db.txt");
+        db.serialize("db_s.txt");
+        db.clear();
+        db.deserialize("db_s.txt");
+        db.jacksonSerialize("db_s.txt");
+        db.clear();
+        db.jacksonDeserialize("db_s.txt");
         num = r.nextInt(3) + 1;
         System.out.println("\n\n\nКоличество продуктов: " + num);
         Product[] product = new Product[num];
         Input_OutputProduct(product, num);
+        System.out.println("\n"+ db);
+
     }
 
     public static int InputQuantity() {
@@ -73,6 +85,7 @@ public class Main {
             books[i].name = Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)];
             books[i].edition = r.nextInt(15000) + 1;
             System.out.println("\nКнига №" + (i + 1) + ":" + books[i]);
+
         }
 
     }
@@ -86,6 +99,7 @@ public class Main {
         for (int i = 0; i < num; ++i) {
             if (books[i].edition < 10000) {
                 System.out.println("\n" + books[i]);
+
             }
         }
 
@@ -98,6 +112,7 @@ public class Main {
         for (int i = 0; i < num; ++i) {
             product[i] = new Product();
             product[i].name = Dictionaries.getProducts()[r.nextInt(Dictionaries.getProducts().length)];
+
             System.out.println("\nНазвание товара: " + product[i].name);
             product[i].term = r.nextInt(363) + 1;
             int month = r.nextInt(9) + 1;
