@@ -1,1 +1,1 @@
-{"list":[{"author":"Integer","genre":"Integer","name":"Integer","edition":2147483647}]}
+{"list":[{"author":"Integer","genre":"Integer","name":"Integer","edition":2147483647},{"author":"Стивенс","genre":"Научная Фанстастика","name":"Зов Ктулху","edition":2065},{"author":"Толкин","genre":"Реализм","name":"Марионетки мироздания","edition":9659}]}

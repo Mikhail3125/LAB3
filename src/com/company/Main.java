@@ -36,8 +36,20 @@ public class Main {
         Database db = new Database();
         Book[] books = new Book[num];
         db.add(new Book("Integer", "Integer", "Integer", Integer.MAX_VALUE));
-        InputData(books, num);
-        OutputData(books, num);
+        for (int i = 0; i < num; ++i) {
+           books[i] = new Book();
+            books[i].author = Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)];
+            books[i].genre = Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)];
+            books[i].name = Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)];
+            books[i].edition = r.nextInt(15000) + 1;
+            System.out.println("\nКнига №" + (i + 1) + ":" + books[i]);
+            db.add( Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)],
+                    Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)],
+                    Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)],
+            r.nextInt(15000) + 1);
+
+        }
+
         db.save("db.txt");
         db.clear();
         db.load("db.txt");
