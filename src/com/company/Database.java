@@ -32,14 +32,18 @@ public class Database {
         return "Database{" + list + '}';
     }
 
-    public void save(String filename) throws IOException {
-        FileWriter outStream = new FileWriter(filename);
+    public void save(String LAB3) throws IOException {
+        FileWriter outStream = new FileWriter(LAB3);
         BufferedWriter bw = new BufferedWriter(outStream);
         for (Book book : list) {
             try {
+                bw.write(book.author);
+                bw.write(System.lineSeparator());
+                bw.write(book.genre);
+                bw.write(System.lineSeparator());
                 bw.write(book.name);
                 bw.write(System.lineSeparator());
-                bw.write(String.valueOf(book.author));
+                bw.write(String.valueOf(book.edition));
                 bw.write(System.lineSeparator());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -50,15 +54,17 @@ public class Database {
         outStream.close();
     }
 
-    public void load(String filename) throws IOException {
+    public void load(String LAB3) throws IOException {
         this.clear();
         //this.list = new ArrayList<>();
-        Scanner scanner = new Scanner(new FileReader(filename));
+        Scanner scanner = new Scanner(new FileReader(LAB3));
         String author = "";
         String genre = "";
         String name = "";
         int edition = -1;
         while (scanner.hasNextLine()) {
+            author = scanner.nextLine();
+            genre = scanner.nextLine();
             name = scanner.nextLine();
             edition = Integer.parseInt(scanner.nextLine());
             this.list.add(new Book(author, genre, name, edition));
@@ -70,9 +76,9 @@ public class Database {
         this.list.clear();
     }
 
-    public void serialize(String filename) {
+    public void serialize(String LAB3) {
         try {
-            FileOutputStream fileOut = new FileOutputStream(filename);
+            FileOutputStream fileOut = new FileOutputStream(LAB3);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(this.list);
             out.close();
@@ -97,12 +103,12 @@ public class Database {
         }
     }
 
-    public void jacksonSerialize(String filename) throws IOException {
-        new ObjectMapper().writeValue(new File(filename), this);
+    public void jacksonSerialize(String LAB3) throws IOException {
+        new ObjectMapper().writeValue(new File(LAB3), this);
     }
 
-    public void jacksonDeserialize(String filename) throws IOException {
-        Database db1 = new ObjectMapper().readValue(new File(filename), Database.class);
+    public void jacksonDeserialize(String LAB3) throws IOException {
+        Database db1 = new ObjectMapper().readValue(new File(LAB3), Database.class);
         this.list = db1.list;
     }
     
@@ -114,8 +120,8 @@ public class Database {
         outStream.close();
     }
 
-    public void deserializeFastJSON(String filename) throws IOException {
-        Scanner scanner = new Scanner(new FileReader(filename));
+    public void deserializeFastJSON(String LAB3) throws IOException {
+        Scanner scanner = new Scanner(new FileReader(LAB3));
         this.clear();
         ArrayList<JSONObject> JSONlist = JSON.parseObject(scanner.nextLine(), ArrayList.class);
         for (JSONObject st : JSONlist) {
