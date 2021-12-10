@@ -3,10 +3,10 @@ package com.company;
 import java.io.Serializable;
 
 public class Book implements Serializable {
-    String author;
-    String genre;
-    String name;
-    int edition;
+    private String author;
+    private String genre;
+    private String name;
+    private int edition;
 
     public Book() {
     }
@@ -19,7 +19,7 @@ public class Book implements Serializable {
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(String author) {
@@ -27,7 +27,7 @@ public class Book implements Serializable {
     }
 
     public String getGenre() {
-        return genre;
+        return this.genre;
     }
 
     public void setGenre(String genre) {
@@ -35,7 +35,7 @@ public class Book implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -43,7 +43,7 @@ public class Book implements Serializable {
     }
 
     public int getEdition() {
-        return edition;
+        return this.edition;
     }
 
     public void setEdition(int edition) {
@@ -52,9 +52,9 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "{" + "Автор: '" + author +
-                "\nЖанр: " + genre +
-                "\nНазвание книги:" + name +
-                "\nТираж:" + edition + '}';
+        return "{" + "Автор: '" + this.author +
+                "\nЖанр: " + this.genre +
+                "\nНазвание книги:" + this.name +
+                "\nТираж:" + this.edition + '}';
     }
 }

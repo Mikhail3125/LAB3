@@ -9,14 +9,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-    public ArrayList<Book> list;
+    public ArrayList<Book> list = new ArrayList<>();
 
     public Database() {
-        list = new ArrayList<>();
     }
 
-    public void add(String author, String genre, String name, int edition) {
-        this.list.add(new Book(author, genre, name, edition));
+    public void add(Book book) {
+        this.list.add(book);
     }
 
     public Book get(int index) {
@@ -35,15 +34,15 @@ public class Database {
     public void save(String LAB3) throws IOException {
         FileWriter outStream = new FileWriter(LAB3);
         BufferedWriter bw = new BufferedWriter(outStream);
-        for (Book book : list) {
+        for (Book book : this.list) {
             try {
-                bw.write(book.author);
+                bw.write(book.getAuthor());
                 bw.write(System.lineSeparator());
-                bw.write(book.genre);
+                bw.write(book.getGenre());
                 bw.write(System.lineSeparator());
-                bw.write(book.name);
+                bw.write(book.getName());
                 bw.write(System.lineSeparator());
-                bw.write(String.valueOf(book.edition));
+                bw.write(String.valueOf(book.getEdition()));
                 bw.write(System.lineSeparator());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -130,7 +129,7 @@ public class Database {
         scanner.close();
     }
 
-    public void add(Book book) {
+    public void addBook(Book book) {
         this.list.add(book);
     }
 

@@ -34,19 +34,15 @@ public class Main {
         System.out.println("Введите количество книг:");
         int num = InputQuantity();
         Database db = new Database();
-        Book[] books = new Book[num];
-        db.add(new Book("Integer", "Integer", "Integer", Integer.MAX_VALUE));
+        Dictionaries dict = new Dictionaries();
         for (int i = 0; i < num; ++i) {
-           books[i] = new Book();
-            books[i].author = Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)];
-            books[i].genre = Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)];
-            books[i].name = Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)];
-            books[i].edition = r.nextInt(15000) + 1;
-            System.out.println("\nКнига №" + (i + 1) + ":" + books[i]);
-            db.add( Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)],
-                    Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)],
-                    Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)],
-            r.nextInt(15000) + 1);
+            Book book = new Book();
+            book.setAuthor(dict.getSurnames()[r.nextInt(dict.getSurnames().length)]);
+            book.setGenre(dict.getGenres()[r.nextInt(dict.getGenres().length)]);
+            book.setName(dict.getNames()[r.nextInt(dict.getNames().length)]);
+            book.setEdition(r.nextInt(15000) + 1);
+            System.out.println("\nКнига №" + (i + 1) + ":" + book);
+            db.addBook(book);
 
         }
 
@@ -63,7 +59,7 @@ public class Main {
         System.out.println("\n\n\nКоличество продуктов: " + num);
         Product[] product = new Product[num];
         Input_OutputProduct(product, num);
-        System.out.println("\n"+ db);
+        System.out.println("\n" + db);
 
     }
 
@@ -90,12 +86,13 @@ public class Main {
     }
 
     public static void InputData(Book[] books, int num) {
+        Dictionaries dict = new Dictionaries();
         for (int i = 0; i < num; ++i) {
             books[i] = new Book();
-            books[i].author = Dictionaries.getSurnames()[r.nextInt(Dictionaries.getSurnames().length)];
-            books[i].genre = Dictionaries.getGenres()[r.nextInt(Dictionaries.getGenres().length)];
-            books[i].name = Dictionaries.getNames()[r.nextInt(Dictionaries.getNames().length)];
-            books[i].edition = r.nextInt(15000) + 1;
+            books[i].setAuthor(dict.getSurnames()[r.nextInt(dict.getSurnames().length)]);
+            books[i].setGenre(dict.getGenres()[r.nextInt(dict.getGenres().length)]);
+            books[i].setName(dict.getNames()[r.nextInt(dict.getNames().length)]);
+            books[i].setEdition(r.nextInt(15000) + 1);
             System.out.println("\nКнига №" + (i + 1) + ":" + books[i]);
 
         }
@@ -109,7 +106,7 @@ public class Main {
         System.out.println("\n\nКнига тираж которой не превышает 10000: ");
 
         for (int i = 0; i < num; ++i) {
-            if (books[i].edition < 10000) {
+            if (books[i].getEdition() < 10000) {
                 System.out.println("\n" + books[i]);
 
             }
@@ -121,9 +118,10 @@ public class Main {
     //      Средний уровень
 //      Вывести наименование товара и конечную дату применения (годен до:).
     public static void Input_OutputProduct(Product[] product, int num) {
+        Dictionaries dict = new Dictionaries();
         for (int i = 0; i < num; ++i) {
             product[i] = new Product();
-            product[i].name = Dictionaries.getProducts()[r.nextInt(Dictionaries.getProducts().length)];
+            product[i].name = dict.getProducts()[r.nextInt(dict.getProducts().length)];
 
             System.out.println("\nНазвание товара: " + product[i].name);
             product[i].term = r.nextInt(363) + 1;
